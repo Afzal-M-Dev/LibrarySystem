@@ -1,11 +1,11 @@
 
-# .NET Core 6 Web API Project
+# .NET Core 8 Web API Project
 
 ## Getting Started
 
 ### Prerequisites
 
-- [.NET SDK 6.0](https://dotnet.microsoft.com/download/dotnet/6.0)
+- [.NET SDK 8.0](https://dotnet.microsoft.com/download/dotnet/8.0)
 
 ### Installation
 
