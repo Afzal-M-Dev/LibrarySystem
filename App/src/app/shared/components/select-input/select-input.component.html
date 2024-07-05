@@ -1,0 +1,34 @@
+<div class="mb-3">
+
+    <label *ngIf="!isLoading" [attr.for]="controlName">
+        {{label}} <span *ngIf="isRequired()" class="text-danger">*</span>
+        &nbsp;
+        <i *ngIf="tooltipData" class="fas fa-info-circle" placement="right" [tooltip]="tooltipData"></i>
+    </label>
+    <label *ngIf="isLoading" [attr.for]="controlName">
+        {{label}}
+        <i style="font-size: 0.5em; width: 15px; height: 15px;" class="spinner-border text-danger m-1"></i>
+    </label>
+
+    <div class="input-group auth-pass-inputgroup">
+
+        <input class="form-control" type="text" *ngIf="isReadonly" [id]="controlName+'input'" [formControl]="control" readonly/>
+
+        <select class="form-control" *ngIf="!isReadonly" (change)="onChange($event)"
+        [ngClass]="{'is-invalid':control.invalid && (isSubmitted || control.touched)}"
+         [id]="controlName+'input'" [formControl]="control" required="false">
+            <option *ngIf="showDefaultOption" value="">Please Select {{label}}</option>
+            <option *ngIf="!showDefaultOption && placeholder" value="">{{placeholder}}</option>
+            <option *ngFor="let opt of temData" [value]="opt.id">{{opt.value.length>25? opt.value.substring(0, 18)+'...' : opt.value }}</option>
+        </select>
+
+        <button *ngIf="icon != ''" [id]="controlName+'icon'" class="btn btn-primary" type="button"
+        (click)="onClick()">
+            <i class="{{icon}}"></i>
+        </button>
+
+    </div>
+    <div *ngIf="control.invalid && (isSubmitted || control.touched)" class="text-danger">
+        <small *ngIf="control.errors?.['required']">{{label}} is required.</small>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="">
+
+    <label>{{label}} <span *ngIf="isRequired" class="text-danger">*</span>
+        &nbsp;
+        <i *ngIf="tooltipData" class="fas fa-info-circle" placement="right"
+        [tooltip]="tooltipData"></i>
+    </label>
+
+    <div class="input-group auth-pass-inputgroup">
+        <input type="file" #fileInput class="form-control" (change)="onFileChange($event)"
+        [accept]="allowedFormats" [multiple]="multiple"/>
+
+        <button *ngIf="files.length>0" class="btn btn-light"
+        (click)="clearInput()" type="button" tooltip="clear">
+            <i class="fas fa-window-close text-danger"></i>
+        </button>
+
+
+      </div>
+
+      <span *ngIf="showFiles">
+
+        <small *ngFor="let file of files; let i = index;" class="text-info fw-bold">
+        {{file.name}}&nbsp;
+          <i (click)="removeFile(file)" tooltip="Remove {{file.name}}"
+          class="mdi mdi-close-circle-outline text-danger mx-1 pointer"></i>
+
+          <span *ngIf="files.length!= i+1">
+            |&nbsp;
+          </span>
+        </small>
+      </span>
+
+    <small class="text-danger d-block">{{fileError}}</small>
+    <small class="text-danger d-block" *ngIf="isRequired && isSubmitted && files.length==0">{{label}} field is required.</small>
+</div>

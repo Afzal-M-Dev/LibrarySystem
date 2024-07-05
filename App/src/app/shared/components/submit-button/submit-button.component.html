@@ -1,0 +1,12 @@
+<button *ngIf="isSubmitted" [ngClass]="btnClass" disabled
+[style]="'color:'+ textColor + ' !important; background-color: ' + backgroundColor + ' !important;'">
+    <i style="font-size: 1.5em;" class="bx bx-loader-circle bx-spin"></i>
+</button>
+
+<button *ngIf="!isSubmitted" [ngClass]="btnClass" type="{{btnType}}"
+(click)="onClick()"
+[style]="'color:'+ textColor + ' !important; background-color: ' + backgroundColor + ' !important;'">
+  <i *ngIf="leftIcon" class="pe-1" [ngClass]="leftIcon"></i>
+  {{label}}
+  <i *ngIf="rightIcon" class="ps-1" [ngClass]="rightIcon"></i>
+</button>

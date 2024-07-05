@@ -1,0 +1,140 @@
+<div class="account-pages my-5 ">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-8 col-xl-8">
+        <div class="card overflow-hidden">
+          <div class="bg-primary-subtle">
+            <div class="row">
+              <div class="col-7">
+                <div class="text-primary p-4">
+                  <h5 class="text-primary">Register !</h5>
+                  <p>Enter your valid details to signup.</p>
+                </div>
+              </div>
+              <div class="col-5 align-self-end">
+                <img src="assets/img/profile-img.png" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div>
+          <div class="card-body pt-0">
+            <div>
+              <a routerLink="/">
+                <div class="avatar-md profile-user-wid mb-4">
+                  <span class="avatar-title rounded-circle bg-light">
+                    <img src="assets/img/lib.png" alt="" class="rounded-circle" height="80">
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div class="p-2">
+              <form class="form-horizontal" [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+
+                <div class="row">
+                  <app-text-input class="mb-3 col-lg-6 col-md-6 col-sm-12"
+                  [control]="inputForm.controls.firstName"
+                  [type]="'text'" [controlName]="'firstName'" [label]="'First Name'"
+                  [isSubmitted]="isSubmitted">
+                  </app-text-input>
+
+                  <app-text-input class="mb-3 col-lg-6 col-md-6 col-sm-12"
+                  [control]="inputForm.controls.lastName"
+                  [type]="'email'" [controlName]="'lastName'" [label]="'Last Name'"
+                  [isSubmitted]="isSubmitted">
+                  </app-text-input>
+                </div>
+
+                <div class="row">
+                  <app-text-input class="mb-3 col-lg-6 col-md-6 col-sm-12"
+                  [control]="inputForm.controls.username"
+                  [type]="'text'" [controlName]="'username'" [label]="'User Name'"
+                  [isSubmitted]="isSubmitted">
+                  </app-text-input>
+
+                  <app-text-input class="mb-3 col-lg-6 col-md-6 col-sm-12"
+                  [control]="inputForm.controls.email"
+                  [type]="'email'" [controlName]="'email'" [label]="'Email'"
+                  [isSubmitted]="isSubmitted">
+                  </app-text-input>
+                </div>
+
+                <div class="row">
+
+                  <app-select-input class="mb-3 col-lg-6 col-md-6 col-sm-12"
+                  [control]="inputForm.controls.role"
+                  [controlName]="'role'"
+                  [label]="'System Role'"
+                  [data]="roles"
+                  [showDefaultOption]="true"
+                  [isSubmitted]="isSubmitted">
+                  </app-select-input>
+
+                  <app-text-input class="mb-3 col-lg-6 col-md-6 col-sm-12"
+                  [control]="inputForm.controls.contact"
+                  [type]="'text'" [controlName]="'contact'" [label]="'Contact'"
+                  [isSubmitted]="isSubmitted">
+                  </app-text-input>
+                </div>
+
+                <div class="row">
+                  <app-textarea-input class="col-12"
+                  [control]="inputForm.controls.address" [controlName]="'address'"
+                  [label]="'Address'"
+                  [rows]="3" [allowResize]="true" [isSubmitted]="isSubmitted">
+                  </app-textarea-input>
+
+                </div>
+
+                <div class="row">
+                  <div class="mb-3 col-lg-6 col-md-6 col-sm-12">
+                    <label for="password">Password <small class="text-danger">*</small></label>
+                    <div class="input-group auth-pass-inputgroup">
+                      <input type="{{pwType}}" class="form-control" formControlName="password"
+                      placeholder="Enter your password here."
+                      [ngClass]="{ 'is-invalid': inputForm.controls.password.touched && inputForm.controls.password.invalid }" aria-label="Password"
+                        aria-describedby="password-addon">
+
+                      <button class="btn btn-light ms-0" type="button"
+                      (click)="pwType==='password'?pwType='text':pwType='password'">
+                        <i class="{{pwType==='password'?'mdi mdi-eye-outline':'mdi mdi-eye-off-outline'}}"></i>
+                      </button>
+
+                      <div *ngIf="inputForm.controls.password.invalid" class="invalid-feedback">
+                        <span *ngIf="inputForm.controls.password.errors.required">Password is required</span>
+                        <span *ngIf="inputForm.controls.password.errors.pattern">Password length is 8 -30 characters (use alpha numeric with special characters and Capitals)</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <app-text-input class="mb-3 col-lg-6 col-md-6 col-sm-12"
+                  [control]="inputForm.controls.confirmPassword"
+                  [type]="'password'" [controlName]="'confirmPassword'" [label]="'Confirm Password'"
+                  [isSubmitted]="isSubmitted">
+                  </app-text-input>
+                </div>
+
+
+                <br>
+                <div class="mt-3 d-grid">
+                  <app-submit-button class="d-grid" [label]="'Register'"
+                  [isSubmitted]="isLoading"></app-submit-button>
+
+                </div>
+
+              </form>
+            </div>
+
+
+
+          </div>
+        </div>
+
+        <div class="mt-5 text-center">
+          <p>Already have account? <a routerLink="/login" class="fw-medium text-primary"> Sign In here</a> </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- end container -->
+</div>
+<!-- end page -->

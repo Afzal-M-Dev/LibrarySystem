@@ -1,0 +1,158 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Nodlays Project\\Library System (Core 8 \u002B angular 16)\\Api\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E4426611-3F22-42DC-A774-D16E960A70EF}|LibraryManagement.csproj|d:\\nodlays project\\library system (core 8 \u002B angular 16)\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4426611-3F22-42DC-A774-D16E960A70EF}|LibraryManagement.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4426611-3F22-42DC-A774-D16E960A70EF}|LibraryManagement.csproj|d:\\nodlays project\\library system (core 8 \u002B angular 16)\\api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E4426611-3F22-42DC-A774-D16E960A70EF}|LibraryManagement.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4426611-3F22-42DC-A774-D16E960A70EF}|LibraryManagement.csproj|d:\\nodlays project\\library system (core 8 \u002B angular 16)\\api\\librarymanagement.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{E4426611-3F22-42DC-A774-D16E960A70EF}|LibraryManagement.csproj|solutionrelative:librarymanagement.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4426611-3F22-42DC-A774-D16E960A70EF}|LibraryManagement.csproj|d:\\nodlays project\\library system (core 8 \u002B angular 16)\\api\\service\\bookservice\\bookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4426611-3F22-42DC-A774-D16E960A70EF}|LibraryManagement.csproj|solutionrelative:service\\bookservice\\bookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4426611-3F22-42DC-A774-D16E960A70EF}|LibraryManagement.csproj|d:\\nodlays project\\library system (core 8 \u002B angular 16)\\api\\service\\reviewservice\\reviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4426611-3F22-42DC-A774-D16E960A70EF}|LibraryManagement.csproj|solutionrelative:service\\reviewservice\\reviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4426611-3F22-42DC-A774-D16E960A70EF}|LibraryManagement.csproj|d:\\nodlays project\\library system (core 8 \u002B angular 16)\\api\\controllers\\reviewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4426611-3F22-42DC-A774-D16E960A70EF}|LibraryManagement.csproj|solutionrelative:controllers\\reviewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 232,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LibraryManagement",
+              "DocumentMoniker": "D:\\Nodlays Project\\Library System (Core 8 \u002B angular 16)\\Api\\LibraryManagement.csproj",
+              "RelativeDocumentMoniker": "LibraryManagement.csproj",
+              "ToolTip": "D:\\Nodlays Project\\Library System (Core 8 \u002B angular 16)\\Api\\LibraryManagement.csproj",
+              "RelativeToolTip": "LibraryManagement.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-07-04T05:53:31.57Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ReviewService.cs",
+              "DocumentMoniker": "D:\\Nodlays Project\\Library System (Core 8 \u002B angular 16)\\Api\\Service\\ReviewService\\ReviewService.cs",
+              "RelativeDocumentMoniker": "Service\\ReviewService\\ReviewService.cs",
+              "ToolTip": "D:\\Nodlays Project\\Library System (Core 8 \u002B angular 16)\\Api\\Service\\ReviewService\\ReviewService.cs",
+              "RelativeToolTip": "Service\\ReviewService\\ReviewService.cs",
+              "ViewState": "AQIAAEMAAAAAAAAAAAAhwFMAAABNAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-28T14:14:19.361Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BookService.cs",
+              "DocumentMoniker": "D:\\Nodlays Project\\Library System (Core 8 \u002B angular 16)\\Api\\Service\\BookService\\BookService.cs",
+              "RelativeDocumentMoniker": "Service\\BookService\\BookService.cs",
+              "ToolTip": "D:\\Nodlays Project\\Library System (Core 8 \u002B angular 16)\\Api\\Service\\BookService\\BookService.cs",
+              "RelativeToolTip": "Service\\BookService\\BookService.cs",
+              "ViewState": "AQIAACYBAAAAAAAAAAAawDMBAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-28T14:06:17.463Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Nodlays Project\\Library System (Core 8 \u002B angular 16)\\Api\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "D:\\Nodlays Project\\Library System (Core 8 \u002B angular 16)\\Api\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-28T14:05:51.042Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Nodlays Project\\Library System (Core 8 \u002B angular 16)\\Api\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\Nodlays Project\\Library System (Core 8 \u002B angular 16)\\Api\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAhwCwAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-28T14:05:45.428Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ReviewController.cs",
+              "DocumentMoniker": "D:\\Nodlays Project\\Library System (Core 8 \u002B angular 16)\\Api\\Controllers\\ReviewController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ReviewController.cs",
+              "ToolTip": "D:\\Nodlays Project\\Library System (Core 8 \u002B angular 16)\\Api\\Controllers\\ReviewController.cs",
+              "RelativeToolTip": "Controllers\\ReviewController.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAQwCUAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-28T14:05:34.409Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 518,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{6324226f-61b6-4f28-92ee-18d4b5fe1e48}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

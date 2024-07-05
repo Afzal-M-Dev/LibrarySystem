@@ -1,0 +1,84 @@
+
+<div class="row my-1">
+
+  <div class="col-sm-12 col-md-4 col-lg-4">
+    <div class="input-group">
+      <input type="text" class="form-control" [(ngModel)]="searchValue" (keyup.enter)="applyFilter(searchValue)" placeholder="Filter"/>
+      <button (click)="applyFilter(searchValue)" title="Search"
+      class="btn btn-light" type="button" [style]="'color:'+ textColor + ' !important; background-color: ' + backgroundColor + ' !important;'">
+        <i class="bx bx-search-alt"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="col-sm-12 col-md-8 col-lg-8 text-end">
+    <div *ngIf="isAltered">
+      <button (click)="resetTable()" class="btn btn-sm btn-danger rounded rounded-circle" tooltip="Reset Table">x</button>
+    </div>
+  </div>
+
+</div>
+
+<div class="table-responsive" style="min-height: 200px;" *ngIf="viewType==='list'">
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th [style]="'color:'+ textColor + ' !important; background-color: ' + backgroundColor + ' !important;'"
+        class="bg-primary text-white" [ngClass]="th.title==='Action'?'text-center':''"
+        *ngFor="let th of tableHeader">
+          <span *ngIf="th.sortable">
+            <span class="pointer" (click)="sortTable(th.value)">
+              {{th.title}}
+              <span *ngIf="sortColumnName===th.value">
+                <i *ngIf="sortDirection==='asc'" class="bx bx-chevron-down"></i>
+                <i *ngIf="sortDirection==='desc'" class="bx bx-chevron-up"></i>
+              </span>
+            </span>
+          </span>
+          <span class="text-center align-items-center" *ngIf="!th.sortable">{{th.title}}</span>
+        </th>
+      </tr>
+
+    </thead>
+    <tbody>
+      <ng-container [ngTemplateOutlet]="temp" [ngTemplateOutletContext]="{ data: dataList }"></ng-container>
+    </tbody>
+  </table>
+
+  <span class="d-flex justify-content-center text-secondary" *ngIf="totalRows===0">
+    No Record Found
+    <hr/>
+  </span>
+</div>
+
+<div class="row" *ngIf="viewType==='grid'">
+  <ng-container [ngTemplateOutlet]="temp" [ngTemplateOutletContext]="{ data: dataList }"></ng-container>
+  <span class="d-flex justify-content-center text-secondary" *ngIf="totalRows===0">
+    No Record Found
+    <hr/>
+  </span>
+</div>
+
+<div class="row m-1">
+
+  <div class="col-md-4  text-center">
+    Page Size:
+    <select
+      (change)="changeLength($event.target?.['value'])">
+      <option value="10">10</option>
+      <option value="25">25</option>
+      <option value="75">75</option>
+      <option value="100">100</option>
+    </select>
+  </div>
+  <div class="col-md-4 text-center">
+    Page: {{currentPage+1}} ({{currentRows}} out of {{totalRows}})
+  </div>
+  <div class="col-md-4  text-center">
+      <button class="btn btn-sm btn-outline-secondary fw-bolder" (click)="goStart()" [disabled]="currentPage+1===1" tooltip="Page 1">&nbsp; << &nbsp;</button>&nbsp;
+      <button class="btn btn-sm btn-outline-info fw-bolder" (click)="goPrev()" [disabled]="currentPage+1===1" tooltip="Previous">&nbsp; < &nbsp;</button>&nbsp;
+      <button class="btn btn-sm btn-outline-info fw-bolder" (click)="goNext()" [disabled]="totalPages===currentPage+1" tooltip="Next">&nbsp; > &nbsp;</button>&nbsp;
+      <button class="btn btn-sm btn-outline-secondary fw-bolder" (click)="goLast()" [disabled]="totalPages===currentPage+1" tooltip="Page {{totalPages}}">&nbsp; >> &nbsp;</button>
+  </div>
+</div>

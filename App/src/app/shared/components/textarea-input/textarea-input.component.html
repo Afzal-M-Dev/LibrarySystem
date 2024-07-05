@@ -1,0 +1,20 @@
+<div class="mb-3">
+
+  <label [attr.for]="controlName">
+      {{label}} <span *ngIf="isRequired()" class="text-danger">*</span>
+      &nbsp;
+      <i *ngIf="tooltipData" class="fas fa-info-circle" placement="right" [tooltip]="tooltipData"></i>
+  </label>
+
+  <textarea [style]="allowResize ? '' : 'resize:none'"
+  [id]="controlName+'input'" [formControl]="control"
+  class="form-control" [ngClass]="{'is-invalid':control.invalid && (isSubmitted || control.touched)}"
+  placeholder="{{placeholder}}" [rows]="rows" required="false" [readonly]="isReadonly">
+  </textarea>
+
+  <div *ngIf="control.invalid && (isSubmitted || control.touched)" class="invalid-feedback">
+      <span *ngIf="control.errors?.['required']">{{label}} is required.</span>
+      <span *ngIf="control.errors?.['pattern']">Invalid format.</span>
+  </div>
+
+</div>

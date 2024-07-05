@@ -1,0 +1,164 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-lg-12"  >
+      <div class="card">
+        <div class="card-body">
+          <h4 class="text-bold text-center">{{loggedinUser.role===this.userRoleEnum.Customer? 'My Books':'Checked-out List'}}</h4>
+
+          <app-data-table *ngIf="tableHeader.length>0"
+          #bookTable [paramQuery]="queryParam" [endpoint]="endpoint" [tableHeader]="tableHeader" [temp]="trTemp">
+          </app-data-table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Book Table Rows -->
+<ng-template #trTemp let-data="data">
+  <tr *ngFor="let i of data">
+    <td style="width: 120px;">
+      <a href="{{i.coverImage}}" target="_blank">
+        <img src="{{i.coverImage}}" width="50" />
+      </a>
+    </td>
+    <td *ngIf="loggedinUser.role===this.userRoleEnum.Librarian">
+      {{i.userName}}
+    </td>
+    <td>
+      <a routerLink="/home/book-detail/{{i.id}}" tooltip="View Details">
+        {{i.title}}
+      </a>
+    </td>
+    <td>
+      {{i.author}}
+    </td>
+    <td>
+      {{i.checkOutDate}}
+    </td>
+    <td>
+      <span [ngClass]="i.isLate?'text-danger':'text-success'" tooltip="{{i.isLate?'Due Date exceeded':''}}">
+        {{i.dueDate}}
+      </span>
+    </td>
+    <td class="text-center">
+      <div class="dropdown pointer" dropdown placement="bottom-left">
+        <i class="mdi mdi-dots-vertical dropdown-toggle" style="font-size: 1.2em;" dropdownToggle data-toggle="dropdown"
+          aria-expanded="true">
+        </i>
+        <div class="dropdown-menu dropdown-menu-end" *dropdownMenu>
+
+          <a class="dropdown-item"  routerLink="/home/book-detail/{{i.id}}">
+            <i class="mdi mdi-eye"></i> &nbsp; Book Detail
+          </a>
+
+          <a *ngIf="loggedinUser.id===i.userId" class="dropdown-item" (click)="returnBook(i)" href="javascript: void(0);">
+            <i class="mdi mdi-book-arrow-left"></i> &nbsp; Return
+          </a>
+
+        </div>
+      </div>
+    </td>
+  </tr>
+</ng-template>
+
+
+<!-- Update Modal -->
+<ng-template #updBookModal>
+  <form [formGroup]="inputForm" (ngSubmit)="onUpdate()">
+
+    <div class="modal-header">
+        <h5 class="modal-title">Update Book</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modalRef.hide()"></button>
+    </div>
+    <div class="modal-body">
+
+      <div class="text-center" *ngIf="updBook?.coverImage">
+
+        <a href="{{updBook?.coverImage}}" target="_blank">
+          <img src="{{updBook?.coverImage}}" alt="cover"
+          class="img-thumbnail rounded-circle" width="120" height="120">
+        </a>
+        <hr>
+      </div>
+
+
+      <div class="row">
+        <app-text-input class="col-sm-12 col-md-6 col-lg-6"
+        [control]="inputForm.controls.title"
+        [type]="'text'" [controlName]="'title'" [label]="'Book Title'"
+        [isSubmitted]="isSubmitted">
+        </app-text-input>
+
+        <app-text-input class="col-sm-12 col-md-6 col-lg-6"
+        [control]="inputForm.controls.author"
+        [type]="'text'" [controlName]="'author'" [label]="'Book Author'"
+        [isSubmitted]="isSubmitted">
+        </app-text-input>
+      </div>
+
+      <div class="row">
+        <app-text-input class="col-sm-12 col-md-6 col-lg-6"
+        [control]="inputForm.controls.publisher"
+        [type]="'text'" [controlName]="'publisher'" [label]="'Publisher Name'"
+        [isSubmitted]="isSubmitted">
+        </app-text-input>
+
+        <app-text-input class="col-sm-12 col-md-6 col-lg-6"
+        [control]="inputForm.controls.publicationDate"
+        [type]="'date'" [controlName]="'publicationDate'" [label]="'Publication Date'"
+        [isSubmitted]="isSubmitted">
+        </app-text-input>
+      </div>
+
+      <div class="row">
+        <app-text-input class="col-sm-12 col-md-4 col-lg-4"
+        [control]="inputForm.controls.category"
+        [type]="'text'" [controlName]="'category'" [label]="'Book Category'"
+        [isSubmitted]="isSubmitted">
+        </app-text-input>
+
+        <app-text-input class="col-sm-12 col-md-4 col-lg-4"
+        [control]="inputForm.controls.isbn"
+        [type]="'text'" [controlName]="'isbn'" [label]="'ISBN'"
+        [isSubmitted]="isSubmitted">
+        </app-text-input>
+
+        <app-text-input class="col-sm-12 col-md-4 col-lg-4"
+        [control]="inputForm.controls.pageCount"
+        [type]="'number'" [min]="50" [controlName]="'pageCount'" [label]="'Total Pages'"
+        [isSubmitted]="isSubmitted">
+        </app-text-input>
+      </div>
+
+      <div class="row">
+        <app-textarea-input class="col-12"
+        [control]="inputForm.controls.description" [controlName]="'description'"
+        [label]="'Book Description'"
+        [rows]="5" [allowResize]="true" [isSubmitted]="isSubmitted">
+        </app-textarea-input>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-12">
+          <app-file-input [label]="'New Cover'" [multiple]="false" [isRequired]="false"
+          (outputFiles)="getAttachmentFiles($event)" [parentTrigger]="clrAttachEvent" [isSubmitted]="isSubmitted">
+          </app-file-input>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="modal-footer mx-3">
+      <button *ngIf="!isSubmitted"
+      type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="modalRef.hide()">Cancel</button>
+
+      <app-submit-button [label]="'Update'"
+      [isSubmitted]="isSubmitted" [btnClass]="'btn btn-primary w-md'">
+      </app-submit-button>
+    </div>
+  </form>
+</ng-template>

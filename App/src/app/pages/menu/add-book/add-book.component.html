@@ -1,0 +1,86 @@
+<div class="container-fluid">
+
+  <div class="row mt-5">
+      <div class="col-lg-8 offset-lg-2">
+          <div class="card">
+              <div class="card-body">
+                  <h4 class=" mb-4 text-center text-decoration-underline">New Book</h4>
+
+                  <form [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+
+                    <div class="row">
+                      <app-text-input class="col-sm-12 col-md-6 col-lg-6"
+                      [control]="inputForm.controls.title"
+                      [type]="'text'" [controlName]="'title'" [label]="'Book Title'"
+                      [isSubmitted]="isSubmitted">
+                      </app-text-input>
+
+                      <app-text-input class="col-sm-12 col-md-6 col-lg-6"
+                      [control]="inputForm.controls.author"
+                      [type]="'text'" [controlName]="'author'" [label]="'Book Author'"
+                      [isSubmitted]="isSubmitted">
+                      </app-text-input>
+                    </div>
+
+                    <div class="row">
+                      <app-text-input class="col-sm-12 col-md-6 col-lg-6"
+                      [control]="inputForm.controls.publisher"
+                      [type]="'text'" [controlName]="'publisher'" [label]="'Publisher Name'"
+                      [isSubmitted]="isSubmitted">
+                      </app-text-input>
+
+                      <app-text-input class="col-sm-12 col-md-6 col-lg-6"
+                      [control]="inputForm.controls.publicationDate"
+                      [type]="'date'" [controlName]="'publicationDate'" [label]="'Publication Date'"
+                      [isSubmitted]="isSubmitted">
+                      </app-text-input>
+                    </div>
+
+                    <div class="row">
+                      <app-text-input class="col-sm-12 col-md-4 col-lg-4"
+                      [control]="inputForm.controls.category"
+                      [type]="'text'" [controlName]="'category'" [label]="'Book Category'"
+                      [isSubmitted]="isSubmitted">
+                      </app-text-input>
+
+                      <app-text-input class="col-sm-12 col-md-4 col-lg-4"
+                      [control]="inputForm.controls.iSBN"
+                      [type]="'text'" [controlName]="'iSBN'" [label]="'ISBN'"
+                      [isSubmitted]="isSubmitted">
+                      </app-text-input>
+
+                      <app-text-input class="col-sm-12 col-md-4 col-lg-4"
+                      [control]="inputForm.controls.pageCount"
+                      [type]="'number'" [min]="50" [controlName]="'pageCount'" [label]="'Total Pages'"
+                      [isSubmitted]="isSubmitted">
+                      </app-text-input>
+                    </div>
+
+                    <div class="row">
+                      <app-textarea-input class="col-12"
+                      [control]="inputForm.controls.description" [controlName]="'description'"
+                      [label]="'Book Description'"
+                      [rows]="5" [allowResize]="true" [isSubmitted]="isSubmitted">
+                      </app-textarea-input>
+                    </div>
+
+                    <div class="row mb-3">
+                      <div class="col-12">
+                        <app-file-input [label]="'Cover Image'" [multiple]="false" [isRequired]="true"
+                        (outputFiles)="getAttachmentFiles($event)" [parentTrigger]="clrAttachEvent" [isSubmitted]="isSubmitted">
+                        </app-file-input>
+                      </div>
+
+                    </div>
+
+                    <div class="text-end">
+                        <app-submit-button [label]="'Submit'"
+                        [isSubmitted]="isLoading" [btnClass]="'btn btn-primary w-md'">
+                        </app-submit-button>
+                    </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

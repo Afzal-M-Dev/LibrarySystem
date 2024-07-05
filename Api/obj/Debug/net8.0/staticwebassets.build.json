@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "1v9KbxdpJPRT1aDB8lM92VkAuR/TR29zU+KU5sVTnkc=",
+  "Source": "LibraryManagement",
+  "BasePath": "_content/LibraryManagement",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "LibraryManagement\\wwwroot",
+      "Source": "LibraryManagement",
+      "ContentRoot": "D:\\Nodlays Project\\Library System (Core 8 + angular 16)\\Api\\wwwroot\\",
+      "BasePath": "_content/LibraryManagement",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}

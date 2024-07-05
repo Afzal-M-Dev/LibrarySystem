@@ -1,0 +1,68 @@
+<div class="container-fluid">
+
+    <div class="row mt-1">
+        <div class="col-sm-12 col-lg-6 col-md-6 offset-md-3 offset-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="mb-4 text-center">Update Profile</h4>
+
+                    <form [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+
+                      <div class="row">
+                        <div class="mb-3 col-12">
+                          <label>User Name</label>
+                          <input type="text" disabled class="form-control" [value]="loggedinUser?.name" readonly/>
+                        </div>
+                      </div>
+
+                      <div class="row">
+
+                        <app-text-input class="col-sm-12 col-md-6 col-lg-6"
+                        [control]="inputForm.controls.firstName"
+                        [type]="'text'" [controlName]="'firstName'" [label]="'First Name'"
+                        [isSubmitted]="isSubmitted">
+                        </app-text-input>
+
+                        <app-text-input class="col-sm-12 col-md-6 col-lg-6"
+                        [control]="inputForm.controls.lastName"
+                        [type]="'text'" [controlName]="'lastName'" [label]="'Last Name'"
+                        [isSubmitted]="isSubmitted">
+                        </app-text-input>
+
+                      </div>
+
+                      <div class="row">
+
+                        <app-text-input class="col-sm-12 col-md-6 col-lg-6"
+                        [control]="inputForm.controls.email"
+                        [type]="'email'" [controlName]="'email'" [label]="'Email'"
+                        [isSubmitted]="isSubmitted">
+                        </app-text-input>
+
+                        <app-text-input class="col-sm-12 col-md-6 col-lg-6"
+                        [control]="inputForm.controls.contact"
+                        [type]="'text'" [controlName]="'contact'" [label]="'Contact'"
+                        [isSubmitted]="isSubmitted">
+                        </app-text-input>
+                      </div>
+
+                      <div class="row">
+                        <app-textarea-input class="col-12"
+                        [control]="inputForm.controls.address" [controlName]="'address'"
+                        [label]="'Address'"
+                        [rows]="3" [allowResize]="true" [isSubmitted]="isSubmitted">
+                        </app-textarea-input>
+                      </div>
+
+                      <div class="text-end">
+                        <app-submit-button [label]="'Update'"
+                        [isSubmitted]="isLoading" [btnClass]="'btn btn-primary w-md'">
+                        </app-submit-button>
+                      </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

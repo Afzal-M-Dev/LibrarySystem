@@ -1,0 +1,204 @@
+<div class="container-fluid">
+
+  <div class="row">
+      <div class="col-lg-12">
+          <div class="card">
+              <div class="card-body">
+                <div class="text-end">
+                  <i *ngIf="book?.status===bookStatusEnum.Available && loggedinUser.role === userRoleEnum.Customer"
+                  (click)="checkoutBook()"
+                  class="fs-4 mdi mdi-book-plus-multiple text-info pointer" tooltip="Check-out book"></i>
+
+                  <i *ngIf="book?.userId===loggedinUser.id"
+                  (click)="returnBook()"
+                  class="fs-4 mdi mdi mdi-book-arrow-left text-warning pointer" tooltip="Return book"></i>
+                </div>
+                  <div class="pt-3">
+                      <div class="row justify-content-center">
+                          <div class="col-xl-8">
+                              <div>
+                                  <div class="text-center">
+                                      <h4>{{book?.title}}</h4>
+                                      <p class="text-muted mb-4">
+                                        <i class="mdi mdi-calendar me-1"></i> {{book?.publicationDate}}
+                                      </p>
+                                  </div>
+
+                                  <hr>
+                                  <div class="text-center">
+                                      <div class="row">
+                                          <div class="col-sm-4">
+                                              <div>
+                                                  <p class="text-muted mb-2">Categories</p>
+                                                  <h5 class="font-size-15">{{book?.category}}</h5>
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-4">
+                                            <div class="mt-4 mt-sm-0">
+                                                <p class="text-muted mb-2">Author</p>
+                                                <h5 class="font-size-15">{{book?.author}}</h5>
+                                            </div>
+                                          </div>
+
+                                          <div class="col-sm-4">
+                                            <div class="mt-4 mt-sm-0">
+                                                <p class="text-muted mb-2">Published by</p>
+                                                <h5 class="font-size-15">{{book?.publisher}}</h5>
+                                            </div>
+                                          </div>
+
+                                      </div>
+                                  </div>
+                                  <hr>
+
+                                  <div class="my-5">
+                                    <img *ngIf="!book?.coverImage" src="assets/img/cover-book.png" alt="book img"
+                                    class="img-thumbnail mx-auto d-block">
+
+                                    <img *ngIf="book?.coverImage" src="{{book?.coverImage}}" alt="book img"
+                                    class="img-thumbnail mx-auto d-block">
+
+                                  </div>
+
+                                  <hr>
+                                  <div class="text-end ratings">
+                                    <rating tooltip="{{'Avg. Rating: ' +avgRate}}"
+                                    [(ngModel)]="avgRate" [readonly]="true" [max]=5></rating>
+                                  </div>
+
+                                  <div class="mt-4">
+                                      <div class="text-muted font-size-14">
+                                        <h4>Description</h4>
+                                          <p>
+                                            &nbsp;&nbsp;&nbsp;
+                                            {{book?.description}}
+                                          </p>
+
+
+                                          <div class="mt-4">
+                                              <h5 class="mb-3">Others: </h5>
+
+                                              <div>
+                                                  <div class="row">
+                                                      <div class="col-12">
+                                                          <div>
+                                                              <ul class="ps-1 list-group list-group-flush">
+                                                                  <li class="py-1 list-group-item border-0"><b>ISBN: </b> {{book?.isbn}}</li>
+                                                                  <li class="py-1 list-group-item border-0"><b>Total Pages: </b> {{book?.pageCount||0}}</li>
+                                                                  <li class="py-1 list-group-item border-0"><b>Availability: </b> <span [ngClass]="book?.status === bookStatusEnum.Available? 'bg-success':'bg-danger'" class="badge">
+                                                                    {{bookStatusEnum[book?.status]}}
+                                                                  </span></li>
+
+                                                                  <span *ngIf="book?.userId===loggedinUser.id">
+                                                                    <li class="py-1 list-group-item border-0"><b>Check-out Date: </b> {{book?.checkOutDate}}</li>
+                                                                    <li class="py-1 list-group-item border-0"><b>Due Date: </b> {{book?.dueDate}}</li>
+                                                                  </span>
+                                                              </ul>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+
+                                      </div>
+
+                                      <hr>
+
+                                      <div class="mt-5">
+
+                                        <h3 class=" fw-bold">
+                                          <i class="bx bx-star text-muted align-middle me-1"></i>
+                                          Ratings
+                                          <small>({{ratings.length}})</small>
+                                        </h3>
+
+                                        <div class="custom-scrol p-2 rating-div">
+
+                                          <div class="text-danger text-center my-3" *ngIf="ratings.length===0">
+                                            <h4 class="text-decoration-underline">No Review Found</h4>
+                                          </div>
+                                          <div [ngClass]="ratings.length>i+1?'border-bottom':''" *ngFor="let rating of ratings; let i = index">
+
+                                            <div class="text-end"
+                                            *ngIf="loggedinUser.id === rating.userId">
+                                              <i tooltip="Remove My Rating" class="mdi mdi-close-circle-outline text-danger pointer"
+                                              (click)="onDelete(rating.id)"></i>
+                                            </div>
+                                            <div class="d-flex py-3" [ngClass]="loggedinUser.id === rating.userId?'border':''">
+                                              <div class="flex-shrink-0 me-3">
+                                                  <div class="avatar-xs">
+                                                      <div class="avatar-title rounded-circle bg-light text-primary">
+                                                          <i class="bx bxs-user"></i>
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+                                              <div class="flex-grow-1">
+                                                  <h5 class="font-size-14 mb-1">{{rating?.userName}}
+                                                    <small class="text-muted float-end">{{rating?.createdAt}}</small>
+                                                  </h5>
+                                                  <p class="text-muted">
+                                                    {{rating?.text}}
+                                                  </p>
+                                                  <div class="ratings2 text-end">
+
+                                                    <rating tooltip="{{'Rate: ' +rating.rating}}"
+                                                    [(ngModel)]="rating.rating" [readonly]="true" [max]=5></rating>
+                                                  </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="mt-4 border p-2" *ngIf="loggedinUser.id === book?.userId && allowRate">
+                                          <h5 class="font-size-16 mb-3">Rate the Book</h5>
+
+                                          <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                  <label for="commentname-input">Name</label>
+                                                  <input type="text" class="form-control" [value]="loggedinUser?.firstName + ' ' + loggedinUser?.lastName" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                              <div class="mb-3">
+                                                <label>Rate</label>
+                                                <div class="input-rating">
+                                                  <rating [(ngModel)]="inputRate" [readonly]="false" [max]=5></rating>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                          <form [formGroup]="inputForm" (ngSubmit)="onRateSubmit()">
+                                            <div class="mb-3">
+                                              <app-textarea-input class="col-12"
+                                              [control]="inputForm.controls.reviewText" [controlName]="'reviewText'"
+                                              [label]="'Review'"
+                                              [rows]="5" [allowResize]="true" [isSubmitted]="isSubmitted">
+                                              </app-textarea-input>
+                                            </div>
+
+                                            <div class="text-end">
+                                              <app-submit-button [label]="'Submit'"
+                                              [isSubmitted]="isLoading" [btnClass]="'btn btn-primary w-md'">
+                                              </app-submit-button>
+                                            </div>
+                                          </form>
+                                      </div>
+                                  </div>
+
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- end card body -->
+          </div>
+          <!-- end card -->
+      </div>
+      <!-- end col -->
+  </div>
+  <!-- end row -->
+</div>
